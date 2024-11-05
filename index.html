@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+<h1>To-Do List</h1>
+<div class="input-container">
+<input id="input"placeholder="Add a new task!">
+<button onclick="add()" class="but" id="add-button" disabled>ADD
+</button>
+</div>
+<ul id="list-container">
+    <li>Task 1
+        <button onclick="deleteItem(event)">Delete</button>
+    </li>
+
+</ul>
+    </div>
+
+<script>
+    var ul = document.getElementById("list-container")
+    var input = document.getElementById("input")
+    var addButton=document.getElementById("add-button")
+    function add()
+    {
+        var listitem= document.createElement("li");
+        listitem.innerHTML = input.value + "<button onclick= 'deleteItem(event)'>Delete</button>"
+        ul.append(listitem)
+        input.value = "";
+        addButton.disabled = true;
+        
+    }
+    function deleteItem(event)
+    {
+        event.target.parentElement.remove()
+    }
+    input.addEventListener("input", function() {
+            if (input.value.trim().length > 0) {
+                addButton.disabled = false;
+            } else {
+                addButton.disabled = true;
+            }
+        });
+</script>
+</div>
+</body>
+
+
+
